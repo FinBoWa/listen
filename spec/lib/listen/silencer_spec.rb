@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe Listen::Silencer do
+
+  testpath = windows? ? '/Users/Shared/' : 'c:\Users\public'
+
   let(:options) { {} }
   let(:listener) { double(Listen::Listener,
-    directories: [Pathname.new(Dir.pwd), Pathname.new("/Users/Shared/")],
+    directories: [Pathname.new(Dir.pwd), Pathname.new(testpath)],
     options: options
   ) }
   let(:silencer) { Listen::Silencer.new(listener) }
